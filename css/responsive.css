@@ -1,0 +1,319 @@
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — All Breakpoints
+   320px → 3840px
+═══════════════════════════════════════════════════════ */
+
+/* ────────────────────────────────────────────────────
+   SMALL PHONES — 320px to 480px
+──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* Cards: single column on tiny screens */
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero lines: ensure readable sizes */
+  .hero__line--1 {
+    font-size: clamp(2rem, 10vw, 2.5rem);
+  }
+
+  .hero__line--2 {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+
+  /* Memory items: full width */
+  .memory-item--large,
+  .memory-item--left,
+  .memory-item--right {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* Secret section: reduce padding */
+  .secret__btn {
+    padding: 0.9rem 2rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding-left: 1rem;
+  }
+
+  /* Music button: icon only on very small screens */
+  .music-label {
+    display: none;
+  }
+
+  .music-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  /* Final section */
+  .final__closing {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .final__closing::before,
+  .final__closing::after {
+    width: 50px;
+  }
+
+  /* Unsaid */
+  .unsaid__msg {
+    padding-left: 1rem;
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   PHONES — 480px to 768px
+──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Prevent horizontal overflow globally */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Cards: single column */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Intro lines: smaller */
+  .intro__line {
+    font-size: var(--fs-md);
+  }
+
+  .intro__line--accent {
+    font-size: var(--fs-lg);
+  }
+
+  /* Memory: no side offsets */
+  .memory-item--large,
+  .memory-item--left,
+  .memory-item--right,
+  .memory-item--center {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* Section padding */
+  .section__container {
+    padding-top: clamp(4rem, 8vw, 6rem);
+    padding-bottom: clamp(4rem, 8vw, 6rem);
+  }
+
+  /* Hero content text alignment */
+  .hero__content {
+    padding: 1rem;
+  }
+
+  /* Final section: smaller gaps */
+  .final__content {
+    gap: 2rem;
+  }
+
+  /* Unsaid heading */
+  .unsaid__heading {
+    font-size: var(--fs-2xl);
+  }
+
+  /* Memories header */
+  .memories__heading {
+    font-size: var(--fs-2xl);
+  }
+
+  /* Secret reveal: full width text */
+  .secret__reveal {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  /* Loader tagline size */
+  .loader__tagline {
+    font-size: var(--fs-base);
+    text-align: center;
+    padding: 0 1rem;
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   TABLETS — 768px to 1024px
+──────────────────────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* Cards: 2 col but smaller gap */
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Memory side offsets reduced */
+  .memory-item--left,
+  .memory-item--right {
+    max-width: 80%;
+  }
+
+  /* Hide desktop cursor on tablets (typically touch) */
+  #cursor,
+  #cursor-dot {
+    display: none;
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   DESKTOP — 1024px+
+──────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+
+  /* Show custom cursor */
+  body.cursor-visible #cursor,
+  body.cursor-visible #cursor-dot {
+    display: block;
+  }
+
+  /* Memory gallery: alternating wide layouts */
+  .memory-item--large {
+    max-width: 800px;
+  }
+
+  .memory-item--left {
+    max-width: 65%;
+  }
+
+  .memory-item--right {
+    max-width: 65%;
+  }
+
+  /* Intro lines: larger sizes on desktop */
+  .intro__line {
+    font-size: var(--fs-lg);
+  }
+
+  .intro__line--accent {
+    font-size: var(--fs-xl);
+  }
+
+  /* Cards: 2 wide columns */
+  .cards-grid {
+    gap: 2rem;
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   LARGE DESKTOP — 1440px+
+──────────────────────────────────────────────────── */
+@media (min-width: 1440px) {
+
+  .section__container {
+    max-width: var(--container-wide);
+  }
+
+  .memories__gallery {
+    gap: 12rem;
+  }
+
+  /* Memory items: wider */
+  .memory-item--large {
+    max-width: 900px;
+  }
+
+  /* Timeline: wider */
+  .timeline {
+    max-width: 1100px;
+  }
+
+  /* Final closing larger */
+  .final__closing {
+    font-size: var(--fs-2xl);
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   2K / 4K — 2560px+
+──────────────────────────────────────────────────── */
+@media (min-width: 2560px) {
+
+  :root {
+    --container-max:  1600px;
+    --container-wide: 2000px;
+    --section-pad: 16rem;
+  }
+
+  /* Scale up comfortable reading sizes on 4K */
+  .hero__line--1 {
+    font-size: clamp(5rem, 6vw, 8rem);
+  }
+
+  .loader__rakhi {
+    width: 200px;
+    height: 200px;
+  }
+
+  .final__content {
+    gap: 5rem;
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   TOUCH DEVICE OVERRIDES
+──────────────────────────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Disable desktop cursor entirely */
+  #cursor,
+  #cursor-dot {
+    display: none !important;
+  }
+
+  /* Ensure all tap targets are at least 44px */
+  .hero__cta,
+  .secret__btn,
+  .music-btn {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* No hover effects on touch — rely on focus/active */
+  .mem-card__inner:hover {
+    transform: none;
+  }
+
+  .mem-card:active .mem-card__inner {
+    transform: translateY(-2px) scale(0.99);
+  }
+
+  /* Memory items: full width on touch */
+  .memory-item--left,
+  .memory-item--right {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   PRINT (graceful)
+──────────────────────────────────────────────────── */
+@media print {
+  .loader,
+  #cursor,
+  #cursor-dot,
+  .music-btn,
+  #scroll-progress,
+  #rakhi-canvas,
+  #final-particles-canvas {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}

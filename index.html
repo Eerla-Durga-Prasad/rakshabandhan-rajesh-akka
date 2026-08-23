@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#0a0608" />
+
+  <!-- SEO & Open Graph -->
+  <title>For My Akka ❤️ — A Raksha Bandhan Surprise</title>
+  <meta name="description"
+    content="A personal cinematic surprise created with love — for my Akka, on Raksha Bandhan." />
+  <meta property="og:title" content="For My Akka ❤️ — A Raksha Bandhan Surprise" />
+  <meta property="og:description" content="A cinematic digital experience made just for you, Akka." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/timeline.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/final.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       SCROLL PROGRESS BAR
+  ═══════════════════════════════════════════════ -->
+  <div id="scroll-progress" role="progressbar" aria-label="Scroll progress" aria-valuenow="0" aria-valuemin="0"
+    aria-valuemax="100"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       MUSIC TOGGLE
+  ═══════════════════════════════════════════════ -->
+  <button id="music-toggle" class="music-btn" aria-label="Toggle background music" title="Toggle music">
+    <span class="music-icon">♫</span>
+    <span class="music-label">Music</span>
+  </button>
+
+  <!-- ═══════════════════════════════════════════════
+       CUSTOM CURSOR (desktop only)
+  ═══════════════════════════════════════════════ -->
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 0: CINEMATIC LOADER
+  ═══════════════════════════════════════════════ -->
+  <section id="loader" class="loader" aria-label="Loading screen" aria-live="polite">
+    <div class="loader__particles" id="loader-particles" aria-hidden="true"></div>
+    <div class="loader__content">
+      <div class="loader__rakhi" aria-hidden="true">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Rakhi thread circle -->
+          <circle cx="60" cy="60" r="50" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="4 3"
+            opacity="0.6" />
+          <!-- Central gem -->
+          <circle cx="60" cy="60" r="14" fill="url(#gemGrad)" opacity="0.9" />
+          <!-- Petals -->
+          <ellipse cx="60" cy="35" rx="6" ry="12" fill="url(#goldGrad)" opacity="0.85" transform="rotate(0 60 60)" />
+          <ellipse cx="60" cy="35" rx="6" ry="12" fill="url(#goldGrad)" opacity="0.85" transform="rotate(45 60 60)" />
+          <ellipse cx="60" cy="35" rx="6" ry="12" fill="url(#goldGrad)" opacity="0.85" transform="rotate(90 60 60)" />
+          <ellipse cx="60" cy="35" rx="6" ry="12" fill="url(#goldGrad)" opacity="0.85" transform="rotate(135 60 60)" />
+          <ellipse cx="60" cy="35" rx="6" ry="12" fill="url(#goldGrad)" opacity="0.85" transform="rotate(180 60 60)" />
+          <ellipse cx="60" cy="35" rx="6" ry="12" fill="url(#goldGrad)" opacity="0.85" transform="rotate(225 60 60)" />
+          <ellipse cx="60" cy="35" rx="6" ry="12" fill="url(#goldGrad)" opacity="0.85" transform="rotate(270 60 60)" />
+          <ellipse cx="60" cy="35" rx="6" ry="12" fill="url(#goldGrad)" opacity="0.85" transform="rotate(315 60 60)" />
+          <defs>
+            <linearGradient id="goldGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#f5c842" />
+              <stop offset="50%" stop-color="#d4a017" />
+              <stop offset="100%" stop-color="#b8860b" />
+            </linearGradient>
+            <radialGradient id="gemGrad" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#fde68a" />
+              <stop offset="60%" stop-color="#d4a017" />
+              <stop offset="100%" stop-color="#78350f" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="loader__tagline">A moment made just for you…</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       MAIN EXPERIENCE (hidden until loader ends)
+  ═══════════════════════════════════════════════ -->
+  <main id="main-content" class="main-hidden" aria-label="Main content">
+
+    <!-- ─────────────────────────────────────────
+         SECTION 1: HERO
+    ───────────────────────────────────────── -->
+    <section id="hero" class="hero section" aria-labelledby="hero-heading">
+      <!-- 3D Canvas -->
+      <canvas id="rakhi-canvas" aria-hidden="true" aria-label="3D Rakhi decoration"></canvas>
+      <!-- Fallback if WebGL not available -->
+      <div id="rakhi-fallback" class="rakhi-fallback" aria-hidden="true">
+        <svg class="rakhi-fallback__thread rakhi-fallback__thread--left" viewBox="0 0 420 90"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 56 C 130 22, 260 62, 420 42" fill="none" stroke="#7d2333" stroke-width="5" opacity="0.8" />
+          <path d="M0 56 C 130 22, 260 62, 420 42" fill="none" stroke="#d4a017" stroke-width="1.4"
+            stroke-dasharray="7 8" opacity="0.7" />
+        </svg>
+        <svg class="rakhi-fallback__thread rakhi-fallback__thread--right" viewBox="0 0 420 90"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 42 C 160 62, 290 22, 420 56" fill="none" stroke="#7d2333" stroke-width="5" opacity="0.8" />
+          <path d="M0 42 C 160 62, 290 22, 420 56" fill="none" stroke="#d4a017" stroke-width="1.4"
+            stroke-dasharray="7 8" opacity="0.7" />
+        </svg>
+        <span class="rakhi-fallback__ring" aria-hidden="true"></span>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__text" aria-label="Hero message">
+          <span class="hero__line hero__line--1" id="hero-heading">Hey Akka…</span>
+          <span class="hero__line hero__line--2">Ee surprise nee kosam.</span>
+          <span class="hero__line hero__line--3">Just for you. ❤️</span>
+        </div>
+        <button class="hero__cta" id="open-surprise-btn" aria-label="Open your surprise">
+          <span class="cta__text">Open Your Surprise</span>
+          <span class="cta__glow" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="hero__scroll-hint" aria-label="Scroll down to continue">
+        <span class="scroll-hint__line" aria-hidden="true"></span>
+        <span class="scroll-hint__text">scroll</span>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────
+         SECTION 2: INTRODUCTION — "Akka ante…"
+    ───────────────────────────────────────── -->
+    <section id="intro" class="intro section" aria-labelledby="intro-heading">
+      <div class="section__container">
+        <h2 class="intro__heading" id="intro-heading">
+          Akka ante just oka<br />relation kaadhu…
+        </h2>
+        <div class="intro__lines" role="list" aria-label="Introduction poem">
+          <p class="intro__line" role="listitem" data-delay="0">Sometimes we fight.</p>
+          <p class="intro__line" role="listitem" data-delay="1">Sometimes we irritate each other.</p>
+          <p class="intro__line" role="listitem" data-delay="2">Sometimes we don't even talk properly.</p>
+          <p class="intro__line intro__line--pause" role="listitem" data-delay="3">But somehow…</p>
+          <p class="intro__line" role="listitem" data-delay="4">when I need someone…</p>
+          <p class="intro__line intro__line--accent" role="listitem" data-delay="5">You are always there.</p>
+          <p class="intro__line intro__line--final" role="listitem" data-delay="6">That's what makes you my Akka.</p>
+        </div>
+      </div>
+      <div class="intro__bg-accent" aria-hidden="true"></div>
+    </section>
+
+    <!-- ─────────────────────────────────────────
+         SECTION 3: MEMORY GALLERY — "From Then… To Now."
+    ───────────────────────────────────────── -->
+    <section id="memories" class="memories section" aria-labelledby="memories-heading">
+      <div class="section__container">
+        <div class="memories__header">
+          <span class="section__label">Our Story</span>
+          <h2 class="memories__heading" id="memories-heading">From Then…<br /><em>To Now.</em></h2>
+          <p class="memories__subtitle">Every photo a chapter. Every moment, ours.</p>
+        </div>
+
+        <!-- Photo placeholders — replace src in js/config.js -->
+        <div class="memories__gallery" id="photo-gallery" aria-label="Memory photo gallery">
+
+          <article class="memory-item memory-item--large" data-photo-index="0" aria-label="Memory photo 1">
+            <div class="memory-item__frame">
+              <div class="memory-item__placeholder" data-index="1" aria-hidden="true">
+                <span class="placeholder__icon">✦</span>
+                <span class="placeholder__text">Photo 01</span>
+                <span class="placeholder__sub">Add image to config.js</span>
+              </div>
+              <img class="memory-item__img" loading="lazy" decoding="async" data-photo-key="photo01" />
+            </div>
+            <div class="memory-item__caption" data-photo-caption="photo01">
+              <span class="caption__year"></span>
+              <p class="caption__text"></p>
+            </div>
+          </article>
+
+          <article class="memory-item memory-item--right" data-photo-index="1" aria-label="Memory photo 2">
+            <div class="memory-item__frame">
+              <div class="memory-item__placeholder" data-index="2" aria-hidden="true">
+                <span class="placeholder__icon">✦</span>
+                <span class="placeholder__text">Photo 02</span>
+                <span class="placeholder__sub">Add image to config.js</span>
+              </div>
+              <img class="memory-item__img" loading="lazy" decoding="async" data-photo-key="photo02" />
+            </div>
+            <div class="memory-item__caption" data-photo-caption="photo02">
+              <span class="caption__year"></span>
+              <p class="caption__text"></p>
+            </div>
+          </article>
+
+          <article class="memory-item memory-item--left" data-photo-index="2" aria-label="Memory photo 3">
+            <div class="memory-item__frame">
+              <div class="memory-item__placeholder" data-index="3" aria-hidden="true">
+                <span class="placeholder__icon">✦</span>
+                <span class="placeholder__text">Photo 03</span>
+                <span class="placeholder__sub">Add image to config.js</span>
+              </div>
+              <img class="memory-item__img" loading="lazy" decoding="async" data-photo-key="photo03" />
+            </div>
+            <div class="memory-item__caption" data-photo-caption="photo03">
+              <span class="caption__year"></span>
+              <p class="caption__text"></p>
+            </div>
+          </article>
+
+          <article class="memory-item memory-item--large memory-item--center" data-photo-index="3"
+            aria-label="Memory photo 4">
+            <div class="memory-item__frame">
+              <div class="memory-item__placeholder" data-index="4" aria-hidden="true">
+                <span class="placeholder__icon">✦</span>
+                <span class="placeholder__text">Photo 04</span>
+                <span class="placeholder__sub">Add image to config.js</span>
+              </div>
+              <img class="memory-item__img" loading="lazy" decoding="async" data-photo-key="photo04" />
+            </div>
+            <div class="memory-item__caption" data-photo-caption="photo04">
+              <span class="caption__year"></span>
+              <p class="caption__text"></p>
+            </div>
+          </article>
+
+          <article class="memory-item memory-item--right" data-photo-index="4" aria-label="Memory photo 5">
+            <div class="memory-item__frame">
+              <img class="memory-item__img" loading="lazy" decoding="async" data-photo-key="photo05" />
+              <div class="memory-item__placeholder" data-index="5" aria-hidden="true">
+                <span class="placeholder__icon">✦</span>
+                <span class="placeholder__text">Photo 05</span>
+                <span class="placeholder__sub">Add image to config.js</span>
+              </div>
+            </div>
+            <div class="memory-item__caption" data-photo-caption="photo05">
+              <span class="caption__year"></span>
+              <p class="caption__text"></p>
+            </div>
+          </article>
+
+          <article class="memory-item memory-item--left" data-photo-index="5" aria-label="Memory photo 6">
+            <div class="memory-item__frame">
+              <div class="memory-item__placeholder" data-index="6" aria-hidden="true">
+                <span class="placeholder__icon">✦</span>
+                <span class="placeholder__text">Photo 06</span>
+                <span class="placeholder__sub">Add image to config.js</span>
+              </div>
+              <img class="memory-item__img" loading="lazy" decoding="async" data-photo-key="photo06" />
+            </div>
+            <div class="memory-item__caption" data-photo-caption="photo06">
+              <span class="caption__year"></span>
+              <p class="caption__text"></p>
+            </div>
+          </article>
+
+          <article class="memory-item memory-item--large" data-photo-index="6" aria-label="Memory photo 7">
+            <div class="memory-item__frame">
+              <div class="memory-item__placeholder" data-index="7" aria-hidden="true">
+                <span class="placeholder__icon">✦</span>
+                <span class="placeholder__text">Photo 07</span>
+                <span class="placeholder__sub">Add image to config.js</span>
+              </div>
+              <img class="memory-item__img" loading="lazy" decoding="async" data-photo-key="photo07" />
+            </div>
+            <div class="memory-item__caption" data-photo-caption="photo07">
+              <span class="caption__year"></span>
+              <p class="caption__text"></p>
+            </div>
+          </article>
+
+          <article class="memory-item memory-item--right" data-photo-index="7" aria-label="Memory photo 8">
+            <div class="memory-item__frame">
+              <div class="memory-item__placeholder" data-index="8" aria-hidden="true">
+                <span class="placeholder__icon">✦</span>
+                <span class="placeholder__text">Photo 08</span>
+                <span class="placeholder__sub">Add image to config.js</span>
+              </div>
+              <img class="memory-item__img" loading="lazy" decoding="async" data-photo-key="photo08" />
+            </div>
+            <div class="memory-item__caption" data-photo-caption="photo08">
+              <span class="caption__year"></span>
+              <p class="caption__text"></p>
+            </div>
+          </article>
+
+        </div><!-- /.memories__gallery -->
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────
+         SECTION 4: MEMORY CARDS
+    ───────────────────────────────────────── -->
+    <section id="memory-cards" class="memory-cards-section section" aria-labelledby="cards-heading">
+      <div class="section__container">
+        <span class="section__label">The Moments</span>
+        <h2 class="section__heading" id="cards-heading">Only We Remember These.</h2>
+        <div class="cards-grid" role="list" aria-label="Memory cards">
+
+          <article class="mem-card" role="listitem" tabindex="0" aria-label="Memory card: Our childhood chaos">
+            <div class="mem-card__inner">
+              <div class="mem-card__icon" aria-hidden="true">✦</div>
+              <h3 class="mem-card__title">Our childhood chaos.</h3>
+              <p class="mem-card__body">Those endless afternoons. The noise. The games. The arguments about absolutely
+                nothing.</p>
+              <div class="mem-card__accent" aria-hidden="true"></div>
+            </div>
+          </article>
+
+          <article class="mem-card" role="listitem" tabindex="0" aria-label="Memory card: Our stupid fights">
+            <div class="mem-card__inner">
+              <div class="mem-card__icon" aria-hidden="true">❋</div>
+              <h3 class="mem-card__title">Our stupid fights.</h3>
+              <p class="mem-card__body">Over the remote. Over food. Over absolutely everything. And then acting like
+                nothing happened.</p>
+              <div class="mem-card__accent" aria-hidden="true"></div>
+            </div>
+          </article>
+
+          <article class="mem-card" role="listitem" tabindex="0" aria-label="Memory card: Moments only we understand">
+            <div class="mem-card__inner">
+              <div class="mem-card__icon" aria-hidden="true">◈</div>
+              <h3 class="mem-card__title">The moments only we understand.</h3>
+              <p class="mem-card__body">One look and we both burst out laughing. No explanation needed. That's a rare
+                thing.</p>
+              <div class="mem-card__accent" aria-hidden="true"></div>
+            </div>
+          </article>
+
+          <article class="mem-card" role="listitem" tabindex="0"
+            aria-label="Memory card: The memories I will never forget">
+            <div class="mem-card__inner">
+              <div class="mem-card__icon" aria-hidden="true">✿</div>
+              <h3 class="mem-card__title">The memories I will never forget.</h3>
+              <p class="mem-card__body">Buried in regular days. Ordinary evenings. Moments I didn't realize I was
+                building forever.</p>
+              <div class="mem-card__accent" aria-hidden="true"></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────
+         SECTION 5: TIMELINE — "A Little Timeline of Us."
+    ───────────────────────────────────────── -->
+    <section id="timeline" class="timeline-section section" aria-labelledby="timeline-heading">
+      <div class="section__container">
+        <span class="section__label">Our Journey</span>
+        <h2 class="section__heading" id="timeline-heading">A Little Timeline of Us.</h2>
+        <div class="timeline" role="list" aria-label="Brother-sister timeline">
+
+          <div class="timeline__item" role="listitem" aria-label="Chapter 01: Childhood">
+            <div class="timeline__marker" aria-hidden="true"><span>01</span></div>
+            <div class="timeline__content">
+              <h3 class="timeline__chapter">Childhood</h3>
+              <p class="timeline__desc">The beginning of everything. Too young to know how lucky we were.</p>
+            </div>
+          </div>
+
+          <div class="timeline__item" role="listitem" aria-label="Chapter 02: Crazy Fights">
+            <div class="timeline__marker" aria-hidden="true"><span>02</span></div>
+            <div class="timeline__content">
+              <h3 class="timeline__chapter">Crazy Fights</h3>
+              <p class="timeline__desc">The legendary arguments. The door slams. The cold wars that lasted exactly 2
+                hours.</p>
+            </div>
+          </div>
+
+          <div class="timeline__item" role="listitem" aria-label="Chapter 03: Growing Up">
+            <div class="timeline__marker" aria-hidden="true"><span>03</span></div>
+            <div class="timeline__content">
+              <h3 class="timeline__chapter">Growing Up</h3>
+              <p class="timeline__desc">Slowly realizing — we were growing into different people, but still the same
+                family.</p>
+            </div>
+          </div>
+
+          <div class="timeline__item" role="listitem" aria-label="Chapter 04: Supporting Each Other">
+            <div class="timeline__marker" aria-hidden="true"><span>04</span></div>
+            <div class="timeline__content">
+              <h3 class="timeline__chapter">Supporting Each Other</h3>
+              <p class="timeline__desc">When things got hard, the phone rang. And somehow, you always knew what to say.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline__item" role="listitem" aria-label="Chapter 05: All The Memories">
+            <div class="timeline__marker" aria-hidden="true"><span>05</span></div>
+            <div class="timeline__content">
+              <h3 class="timeline__chapter">All The Memories</h3>
+              <p class="timeline__desc">More than I can count. More than I could ever put into words.</p>
+            </div>
+          </div>
+
+          <div class="timeline__item timeline__item--final" role="listitem" aria-label="Chapter 06: Today">
+            <div class="timeline__marker timeline__marker--gold" aria-hidden="true"><span>06</span></div>
+            <div class="timeline__content">
+              <h3 class="timeline__chapter">Today</h3>
+              <p class="timeline__desc">And here we are. Still together. Still us.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────
+         SECTION 6: THINGS I NEVER SAY
+    ───────────────────────────────────────── -->
+    <section id="unsaid" class="unsaid-section section" aria-labelledby="unsaid-heading">
+      <div class="section__container">
+        <span class="section__label">From Me</span>
+        <h2 class="unsaid__heading" id="unsaid-heading">Things I Don't<br />Say Enough…</h2>
+        <div class="unsaid__messages" role="list" aria-label="Unsaid messages">
+          <p class="unsaid__msg" role="listitem" data-index="0">You've supported me more times than you probably
+            realize.</p>
+          <p class="unsaid__msg" role="listitem" data-index="1">Even when we fight, you still matter to me more than I
+            say.</p>
+          <p class="unsaid__msg" role="listitem" data-index="2">I may not always show it…</p>
+          <p class="unsaid__msg" role="listitem" data-index="3">But I'm genuinely lucky to have you.</p>
+          <p class="unsaid__msg unsaid__msg--final" role="listitem" data-index="4">Thank you for being my Akka.</p>
+        </div>
+      </div>
+      <div class="unsaid__bg" aria-hidden="true"></div>
+    </section>
+
+    <!-- ─────────────────────────────────────────
+         SECTION 7: SECRET SECTION
+    ───────────────────────────────────────── -->
+    <section id="secret" class="secret-section section" aria-labelledby="secret-heading">
+      <div class="section__container secret__container">
+        <h2 class="secret__heading" id="secret-heading">One Last Thing…</h2>
+        <p class="secret__sub">Maybe don't open this. Or do. Up to you. 😏</p>
+        <button class="secret__btn" id="secret-btn" aria-label="Reveal one last thing" aria-expanded="false">
+          <span class="secret__btn-text">Don't Open This 😏</span>
+          <span class="secret__btn-glow" aria-hidden="true"></span>
+        </button>
+        <div class="secret__reveal" id="secret-reveal" aria-live="polite" aria-hidden="true">
+          <p class="secret__reveal-line" data-step="0">Okay… you clicked it.</p>
+          <p class="secret__reveal-line" data-step="1">So here's the truth…</p>
+          <p class="secret__reveal-line secret__reveal-line--main" data-step="2">
+            Building this took time.<br />
+            Not because it was difficult —<br />
+            but because I wanted it to be right.<br />
+            I wanted you to feel it.
+          </p>
+          <p class="secret__reveal-line secret__reveal-line--accent" data-step="3">
+            You deserve things that are made with care, Akka.<br />
+            And I hope this is one of them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /#main-content -->
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 8: FINAL CINEMATIC ENDING
+       (outside main — full screen, standalone)
+  ═══════════════════════════════════════════════ -->
+  <section id="final" class="final-section" aria-labelledby="final-heading">
+    <canvas id="final-particles-canvas" aria-hidden="true"></canvas>
+    <div class="final__content">
+      <div class="final__rakhi" aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="40" cy="40" r="34" stroke="url(#finalGold)" stroke-width="1" stroke-dasharray="3 2"
+            opacity="0.7" />
+          <circle cx="40" cy="40" r="10" fill="url(#finalGem)" opacity="0.95" />
+          <ellipse cx="40" cy="20" rx="4" ry="9" fill="url(#finalGold)" opacity="0.9" transform="rotate(0 40 40)" />
+          <ellipse cx="40" cy="20" rx="4" ry="9" fill="url(#finalGold)" opacity="0.9" transform="rotate(60 40 40)" />
+          <ellipse cx="40" cy="20" rx="4" ry="9" fill="url(#finalGold)" opacity="0.9" transform="rotate(120 40 40)" />
+          <ellipse cx="40" cy="20" rx="4" ry="9" fill="url(#finalGold)" opacity="0.9" transform="rotate(180 40 40)" />
+          <ellipse cx="40" cy="20" rx="4" ry="9" fill="url(#finalGold)" opacity="0.9" transform="rotate(240 40 40)" />
+          <ellipse cx="40" cy="20" rx="4" ry="9" fill="url(#finalGold)" opacity="0.9" transform="rotate(300 40 40)" />
+          <defs>
+            <linearGradient id="finalGold" x1="0" y1="0" x2="80" y2="80">
+              <stop offset="0%" stop-color="#f5c842" />
+              <stop offset="100%" stop-color="#b8860b" />
+            </linearGradient>
+            <radialGradient id="finalGem" cx="50%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#fde68a" />
+              <stop offset="100%" stop-color="#78350f" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h2 class="final__heading" id="final-heading">Happy Raksha Bandhan,<br /><span class="final__akka">Akka</span>
+        <span class="final__heart">❤️</span></h2>
+
+      <div class="final__lines" aria-label="Final message">
+        <p class="final__line" data-index="0">Mana bond ki age ledu.</p>
+        <p class="final__line" data-index="1">Distance ledu.</p>
+        <p class="final__line" data-index="2">Conditions levu.</p>
+      </div>
+
+      <p class="final__closing">You will always be my Akka.</p>
+
+      <div class="final__signature" aria-label="From your brother">
+        — Your Brother, with love 🤍
+      </div>
+    </div>
+
+    <!-- Cinematic vignette overlay -->
+    <div class="final__vignette" aria-hidden="true"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS
+       Load order: Three.js → GSAP → Our modules
+  ═══════════════════════════════════════════════ -->
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
+
+  <!-- Our modules -->
+  <script src="js/config.js"></script>
+  <script src="js/scene3d.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/cinematic-scroll.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

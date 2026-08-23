@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════════════════════
+   MEMORY CARDS
+═══════════════════════════════════════════════════════ */
+
+.memory-cards-section {
+  background: var(--clr-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-cards-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--clr-gold-dim), transparent);
+}
+
+.memory-cards-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--clr-gold-dim), transparent);
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 1rem;
+}
+
+/* Individual Card */
+.mem-card {
+  position: relative;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+}
+
+.mem-card:nth-child(2) {
+  transform: translateY(60px) scale(0.97);
+}
+
+.mem-card:nth-child(3) {
+  transform: translateY(40px) scale(0.97);
+}
+
+.mem-card:nth-child(4) {
+  transform: translateY(80px) scale(0.97);
+}
+
+.mem-card__inner {
+  position: relative;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  background: rgba(14, 9, 12, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  overflow: hidden;
+  transition: transform var(--dur-slow) var(--ease-out),
+              border-color var(--dur-slow) var(--ease-out),
+              box-shadow var(--dur-slow) var(--ease-out);
+  will-change: transform;
+}
+
+.mem-card__inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(212, 160, 23, 0.04),
+    transparent 50%,
+    rgba(107, 26, 46, 0.03)
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-out);
+}
+
+.mem-card:hover .mem-card__inner,
+.mem-card:focus-visible .mem-card__inner {
+  transform: translateY(-4px);
+  border-color: rgba(212, 160, 23, 0.2);
+  box-shadow: var(--shadow-card), 0 0 40px rgba(212, 160, 23, 0.06);
+}
+
+.mem-card:hover .mem-card__inner::before,
+.mem-card:focus-visible .mem-card__inner::before {
+  opacity: 1;
+}
+
+/* Card Icon */
+.mem-card__icon {
+  font-size: 1.5rem;
+  color: var(--clr-gold-dim);
+  margin-bottom: 1.25rem;
+  display: block;
+  transition: color var(--dur-med) var(--ease-out), transform var(--dur-med) var(--ease-out);
+}
+
+.mem-card:hover .mem-card__icon {
+  color: var(--clr-gold);
+  transform: scale(1.15) rotate(10deg);
+}
+
+/* Card Title */
+.mem-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--clr-text);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  transition: color var(--dur-med) var(--ease-out);
+}
+
+.mem-card:hover .mem-card__title {
+  color: var(--clr-gold-light);
+}
+
+/* Card Body */
+.mem-card__body {
+  font-family: var(--font-elegant);
+  font-size: var(--fs-base);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--clr-text-muted);
+  line-height: 1.65;
+}
+
+/* Accent glow in corner */
+.mem-card__accent {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.06), transparent 70%);
+  transition: transform var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+
+.mem-card:hover .mem-card__accent {
+  transform: scale(1.5);
+}

@@ -1,0 +1,332 @@
+/* ═══════════════════════════════════════════════════════
+   HERO SECTION — Cinematic Opening
+═══════════════════════════════════════════════════════ */
+
+/* ── LOADER ── */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-bg);
+  overflow: hidden;
+}
+
+.loader__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.loader__rakhi {
+  width: clamp(80px, 15vw, 140px);
+  height: clamp(80px, 15vw, 140px);
+  animation: rakhiSpin 8s linear infinite, rakhiFadeIn 1.5s var(--ease-out) forwards;
+  opacity: 0;
+  filter: drop-shadow(0 0 20px rgba(212, 160, 23, 0.4));
+}
+
+@keyframes rakhiSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rakhiFadeIn {
+  from { opacity: 0; transform: scale(0.7) rotate(0deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.loader__tagline {
+  font-family: var(--font-elegant);
+  font-size: var(--fs-md);
+  font-style: italic;
+  color: var(--clr-text-dim);
+  letter-spacing: 0.05em;
+  animation: textFadeIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+@keyframes textFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.loader.is-exiting {
+  animation: loaderExit 1s var(--ease-in-out) forwards;
+}
+
+@keyframes loaderExit {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); pointer-events: none; }
+}
+
+/* ── HERO SECTION ── */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 0%,   rgba(107, 26, 46, 0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 80%,  rgba(212, 160, 23, 0.05) 0%, transparent 50%),
+              var(--clr-bg);
+  overflow: hidden;
+}
+
+/* 3D Canvas — fixed full-page cinematic layer behind all content.
+   Layer order: gradient (10) → this canvas (11) → orbit (12) → particles (13) → text (20+) */
+#rakhi-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  z-index: 11;
+}
+
+/* CSS Fallback — full-screen Rakhi + threads (when WebGL is unavailable) */
+.rakhi-fallback {
+  position: fixed;
+  inset: 0;
+  display: none;
+  --rakhi-x: 80%;
+  --rakhi-y: 42%;
+  --rakhi-roll: 0deg;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.rakhi-fallback.is-active {
+  display: block;
+}
+
+.rakhi-fallback__ring {
+  position: absolute;
+  left: var(--rakhi-x);
+  top: var(--rakhi-y);
+  transform: translate(-50%, -50%) rotate(var(--rakhi-roll));
+  width: clamp(210px, 34vh, 340px);
+  height: clamp(210px, 34vh, 340px);
+  border-radius: 50%;
+  border: 2px solid rgba(212, 160, 23, 0.35);
+  box-shadow: 0 0 40px rgba(212, 160, 23, 0.28), 0 0 110px rgba(212, 160, 23, 0.12),
+              inset 0 0 28px rgba(212, 160, 23, 0.18), inset 0 0 70px rgba(122, 26, 46, 0.14);
+  background: radial-gradient(circle,
+    rgba(212, 160, 23, 0.16) 0%,
+    rgba(155, 32, 64, 0.10) 40%,
+    rgba(8, 5, 7, 0) 68%);
+  animation: fallbackFloat 7s ease-in-out infinite alternate;
+}
+
+.rakhi-fallback__ring::before {
+  content: '';
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 184, 75, 0.35);
+  box-shadow: inset 0 0 18px rgba(212, 160, 23, 0.14);
+}
+
+.rakhi-fallback__ring::after {
+  content: '';
+  position: absolute;
+  inset: 30%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f5c842 0%, #d4a017 55%, #6b1a2e 100%);
+  box-shadow: 0 0 24px rgba(245, 200, 66, 0.5), inset 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.rakhi-fallback__thread {
+  position: absolute;
+  top: var(--rakhi-y);
+  transform: translateY(-50%);
+  width: 42%;
+  height: clamp(60px, 16vh, 130px);
+  overflow: visible;
+}
+
+.rakhi-fallback__thread--left {
+  left: -2%;
+  width: calc(var(--rakhi-x) + 2%);
+  animation: threadSwayL 7s ease-in-out infinite alternate;
+}
+
+.rakhi-fallback__thread--right {
+  left: var(--rakhi-x);
+  width: calc(102% - var(--rakhi-x));
+  animation: threadSwayR 7s ease-in-out infinite alternate;
+}
+
+@keyframes fallbackFloat {
+  from { transform: translate(-50%, -50%) rotate(var(--rakhi-roll)) scale(1); }
+  to   { transform: translate(-50%, calc(-50% + 10px)) rotate(var(--rakhi-roll)) scale(1.015); }
+}
+
+@keyframes threadSwayL {
+  from { transform: translateY(-50%) rotate(0.4deg); }
+  to   { transform: translateY(calc(-50% + 12px)) rotate(-0.6deg); }
+}
+
+@keyframes threadSwayR {
+  from { transform: translateY(calc(-50% + 12px)) rotate(0.6deg); }
+  to   { transform: translateY(-50%) rotate(-0.4deg); }
+}
+
+/* Hero Content */
+.hero__content {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero__line {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--clr-text);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero__line--1 {
+  font-size: var(--fs-3xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.hero__line--2 {
+  font-family: var(--font-elegant);
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--clr-text-dim);
+  letter-spacing: 0.02em;
+}
+
+.hero__line--3 {
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  color: var(--clr-gold);
+  letter-spacing: 0.05em;
+}
+
+/* CTA Button */
+.hero__cta {
+  position: relative;
+  z-index: 21;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  min-height: 56px;
+  background: transparent;
+  border: 1px solid var(--clr-gold-dim);
+  border-radius: var(--radius-full);
+  color: var(--clr-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  overflow: hidden;
+  transition: border-color var(--dur-med) var(--ease-out),
+              color var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out),
+              transform var(--dur-med) var(--ease-out);
+}
+
+.hero__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.1), rgba(107, 26, 46, 0.1));
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-out);
+  border-radius: inherit;
+}
+
+.hero__cta:hover,
+.hero__cta:focus-visible {
+  border-color: var(--clr-gold);
+  color: var(--clr-gold);
+  box-shadow: 0 0 30px rgba(212, 160, 23, 0.2), 0 0 60px rgba(212, 160, 23, 0.08);
+  transform: translateY(-2px);
+}
+
+.hero__cta:hover::before,
+.hero__cta:focus-visible::before {
+  opacity: 1;
+}
+
+.hero__cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.cta__text {
+  position: relative;
+  z-index: 1;
+}
+
+.cta__glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--clr-gold-light), var(--clr-burgundy));
+  opacity: 0;
+  filter: blur(8px);
+  z-index: -1;
+  transition: opacity var(--dur-med) var(--ease-out);
+}
+
+.hero__cta:hover .cta__glow {
+  opacity: 0.3;
+}
+
+/* Click ripple */
+.hero__cta .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(212, 160, 23, 0.3);
+  transform: scale(0);
+  animation: rippleAnim 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* Hero ambient particles (JS-driven, CSS size reference) */
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--clr-gold-light), transparent);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
