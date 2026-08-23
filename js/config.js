@@ -78,7 +78,7 @@ photo08: {
   // Place your music file in /audio/ and update the path below.
   // Supported: .mp3, .ogg
   music: {
-    src:    "",          // e.g. "audio/background.mp3"
+    src:    "audio/kaalamaagi-choosina.mp3",          // e.g. "audio/background.mp3"
     volume: 0.35,        // 0.0 to 1.0
     loop:   true
   },
