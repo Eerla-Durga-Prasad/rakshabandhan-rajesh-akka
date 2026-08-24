@@ -32,6 +32,10 @@
   z-index: 20;
   text-align: center;
   padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+  padding-top: max(clamp(4rem, 8vw, 8rem), env(safe-area-inset-top, 0px));
+  padding-bottom: max(clamp(4rem, 8vw, 8rem), env(safe-area-inset-bottom, 0px));
+  padding-left: max(clamp(1.5rem, 5vw, 4rem), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(1.5rem, 5vw, 4rem), env(safe-area-inset-right, 0px));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +50,7 @@
   height: clamp(60px, 10vw, 100px);
   opacity: 0;
   transform: scale(0.6);
-  filter: drop-shadow(0 0 16px rgba(212, 160, 23, 0.5));
+  filter: drop-shadow(0 0 16px rgba(212, 160, 23, 0.5)) drop-shadow(0 0 40px rgba(212, 160, 23, 0.25));
   animation: finalRakhiAppear 1.5s var(--ease-out) 0.3s forwards,
              finalRakhiRotate 10s linear infinite;
 }
@@ -70,6 +74,7 @@
   line-height: 1.15;
   opacity: 0;
   transform: translateY(30px);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.4);
 }
 
 .final__akka {
@@ -106,6 +111,7 @@
   opacity: 0;
   transform: translateY(20px);
   letter-spacing: 0.02em;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Closing */
@@ -118,6 +124,8 @@
   transform: translateY(20px);
   position: relative;
   padding: 2rem 3rem;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
+  max-width: 90vw;
 }
 
 .final__closing::before,
@@ -143,6 +151,7 @@
   opacity: 0;
   transform: translateY(10px);
   letter-spacing: 0.03em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Vignette overlay */

@@ -114,6 +114,9 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   overscroll-behavior: none;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -123,6 +126,8 @@ body {
   font-weight: 400;
   line-height: 1.65;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -170,6 +175,8 @@ a {
   position: fixed;
   bottom: clamp(1rem, 3vw, 2rem);
   right: clamp(1rem, 3vw, 2rem);
+  bottom: max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-bottom, 0px));
+  right: max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-right, 0px));
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -188,6 +195,7 @@ a {
   transition: all var(--dur-med) var(--ease-out);
   min-height: 44px;
   min-width: 44px;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .music-btn:hover,
@@ -279,6 +287,7 @@ body.cursor-hover #cursor {
   color: var(--clr-gold);
   margin-bottom: 1rem;
   opacity: 0;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6), 0 0 12px rgba(212, 160, 23, 0.1);
 }
 
 .section__heading {
@@ -289,6 +298,7 @@ body.cursor-hover #cursor {
   line-height: 1.15;
   margin-bottom: 3rem;
   opacity: 0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 0, 0, 0.4);
 }
 
 /* ── MAIN HIDDEN STATE ── */
@@ -384,7 +394,25 @@ body::after {
    The fixed 3D canvas (#rakhi-canvas, z-index 11) and the 2D cinematic
    canvases (z-index 10/12/13) render behind all content. This static
    block guarantees text stays above them even if JS styles are skipped
-   (e.g. prefers-reduced-motion). */
+   (e.g. prefers-reduced-motion).
+
+   Layer system:
+   Layer 1:  body background (z-index auto)
+   Layer 2:  sparkle particles (#sparkle-canvas, z-index 2)
+   Layer 3:  section backgrounds (z-index auto)
+   Layer 4:  gradient / ambient glow (z-index 10)
+   Layer 5:  3D Rakhi canvas (z-index 11)
+   Layer 6:  orbit / decorative threads (z-index 12)
+   Layer 7:  particle canvas (z-index 13)
+   Layer 8:  decorative thread fallbacks (z-index 14)
+   Layer 9:  Rakhi fallback ring (z-index 15)
+   Layer 10: section content containers (z-index 20)
+   Layer 11: interactive elements (z-index 21)
+   Layer 12: scroll hint (z-index 21)
+   Layer 13: custom cursor (z-index 9998)
+   Layer 14: scroll progress (z-index 9999)
+   Layer 15: loader (z-index 10000)
+   Layer 16: noise overlay (z-index 99999) */
 .section__container,
 .secret__container {
   position: relative;

@@ -135,6 +135,7 @@
   color: var(--clr-text);
   margin-bottom: 0.5rem;
   line-height: 1.2;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
 }
 
 .timeline__desc {
@@ -144,6 +145,7 @@
   font-style: italic;
   color: var(--clr-text-muted);
   line-height: 1.6;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Final item highlight */
@@ -159,6 +161,7 @@
 @media (max-width: 700px) {
   .timeline {
     padding-left: 1.5rem;
+    padding-right: 0.5rem;
   }
 
   /* Single left spine */
@@ -189,5 +192,18 @@
     padding: 0;
     max-width: 100%;
     margin: 0;
+  }
+
+  .timeline__marker {
+    width: 44px;
+    height: 44px;
+  }
+
+  .timeline__chapter {
+    font-size: var(--fs-md);
+  }
+
+  .timeline__desc {
+    font-size: var(--fs-sm);
   }
 }

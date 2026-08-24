@@ -4,8 +4,89 @@
 ═══════════════════════════════════════════════════════ */
 
 /* ────────────────────────────────────────────────────
+   VERY SMALL PHONES — 320px to 380px
+ ──────────────────────────────────────────────────── */
+@media (max-width: 380px) {
+
+  .hero__content {
+    gap: 1.5rem;
+    padding: 0.75rem;
+  }
+
+  .hero__line--1 {
+    font-size: clamp(1.6rem, 8vw, 2rem);
+  }
+
+  .hero__line--2 {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
+
+  .hero__line--3 {
+    font-size: clamp(0.8rem, 3.5vw, 1rem);
+  }
+
+  .hero__cta {
+    padding: 0.8rem 1.5rem;
+    min-width: 160px;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  .section__container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .intro__heading {
+    font-size: var(--fs-lg);
+  }
+
+  .intro__line {
+    font-size: var(--fs-sm);
+  }
+
+  .memories__heading {
+    font-size: var(--fs-xl);
+  }
+
+  .unsaid__heading {
+    font-size: var(--fs-xl);
+  }
+
+  .final__heading {
+    font-size: var(--fs-xl);
+  }
+
+  .final__line {
+    font-size: var(--fs-sm);
+  }
+
+  .final__closing {
+    font-size: var(--fs-md);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .timeline__marker {
+    width: 38px;
+    height: 38px;
+  }
+
+  .timeline__item {
+    gap: 0 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .music-btn {
+    width: 40px;
+    height: 40px;
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+/* ────────────────────────────────────────────────────
    SMALL PHONES — 320px to 480px
-──────────────────────────────────────────────────── */
+ ──────────────────────────────────────────────────── */
 @media (max-width: 480px) {
 
   /* Cards: single column on tiny screens */
@@ -13,13 +94,29 @@
     grid-template-columns: 1fr;
   }
 
-  /* Hero lines: ensure readable sizes */
+  /* Hero: tighter spacing on small screens */
+  .hero__content {
+    gap: 1.75rem;
+    padding: 1rem 1rem;
+  }
+
   .hero__line--1 {
-    font-size: clamp(2rem, 10vw, 2.5rem);
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
   }
 
   .hero__line--2 {
-    font-size: clamp(1.1rem, 5vw, 1.4rem);
+    font-size: clamp(1rem, 4.5vw, 1.3rem);
+  }
+
+  .hero__line--3 {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
+
+  .hero__cta {
+    padding: 0.85rem 1.75rem;
+    min-width: 180px;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.12em;
   }
 
   /* Memory items: full width */
@@ -64,15 +161,54 @@
     width: 50px;
   }
 
+  .final__heading {
+    font-size: var(--fs-2xl);
+  }
+
+  .final__line {
+    font-size: var(--fs-md);
+  }
+
   /* Unsaid */
   .unsaid__msg {
     padding-left: 1rem;
+  }
+
+  .unsaid__heading {
+    font-size: var(--fs-2xl);
+  }
+
+  /* Memories */
+  .memories__heading {
+    font-size: var(--fs-2xl);
+  }
+
+  /* Scroll hint smaller on tiny screens */
+  .hero__scroll-hint {
+    bottom: 1.5rem;
+  }
+
+  .scroll-hint__line {
+    height: 35px;
+  }
+
+  /* Intro */
+  .intro__heading {
+    font-size: var(--fs-xl);
+  }
+
+  .intro__line {
+    font-size: var(--fs-base);
+  }
+
+  .intro__line--accent {
+    font-size: var(--fs-lg);
   }
 }
 
 /* ────────────────────────────────────────────────────
    PHONES — 480px to 768px
-──────────────────────────────────────────────────── */
+ ──────────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
   /* Prevent horizontal overflow globally */
@@ -141,6 +277,34 @@
     font-size: var(--fs-base);
     text-align: center;
     padding: 0 1rem;
+  }
+
+  /* Hero scroll hint — reduce opacity on mobile */
+  .hero__scroll-hint {
+    opacity: 0.5;
+  }
+
+  /* Final section content */
+  .final__rakhi {
+    width: clamp(50px, 8vw, 80px);
+    height: clamp(50px, 8vw, 80px);
+  }
+
+  .final__heading {
+    font-size: var(--fs-2xl);
+  }
+
+  .final__line {
+    font-size: var(--fs-md);
+  }
+
+  .final__closing {
+    font-size: var(--fs-lg);
+    padding: 1.5rem 2rem;
+  }
+
+  .final__signature {
+    font-size: var(--fs-sm);
   }
 }
 

@@ -82,6 +82,11 @@
       try { window.RBInteractions.init(); } catch (e) { console.warn('[RB] Interactions init error', e); }
     }
 
+    // 2b. Init premium sparkle background
+    if (window.RBSparkle) {
+      try { window.RBSparkle.init(); } catch (e) { console.warn('[RB] Sparkle init error', e); }
+    }
+
     // 3. Init music system
     if (window.RBMusic) {
       try { window.RBMusic.init(); } catch (e) { console.warn('[RB] Music init error', e); }
@@ -134,10 +139,12 @@
       // Tab hidden — pause heavy animations
       if (window.RBScene3D) window.RBScene3D.pause();
       if (window.RBCinematic) window.RBCinematic.pause();
+      if (window.RBSparkle) window.RBSparkle.pause();
     } else {
       // Tab visible — resume the cinematic layers
       if (window.RBScene3D) window.RBScene3D.resume();
       if (window.RBCinematic) window.RBCinematic.resume();
+      if (window.RBSparkle) window.RBSparkle.resume();
     }
   });
 
