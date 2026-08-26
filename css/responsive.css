@@ -63,28 +63,37 @@
   .hero__text {
     gap: clamp(0.75rem, 2vh, 1.25rem);
     width: 100%;
+    align-items: center;
+    text-align: center;
   }
 
   .hero__line {
     padding: 0 0.25rem;
+    text-align: center;
   }
 
   .hero__line--1 {
-    font-size: clamp(2.4rem, 9vw, 3.4rem);
+    font-size: clamp(1.35rem, 6.5vw, 2.5rem);
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.01em;
+    white-space: nowrap;
+    max-width: 100%;
   }
 
   .hero__line--2 {
-    font-size: clamp(1.25rem, 4.5vw, 1.65rem);
+    font-size: clamp(1.05rem, 4.2vw, 1.5rem);
     font-style: italic;
     line-height: 1.35;
+    white-space: nowrap;
+    max-width: 100%;
   }
 
   .hero__line--3 {
-    font-size: clamp(1.1rem, 4vw, 1.35rem);
+    font-size: clamp(0.95rem, 3.8vw, 1.25rem);
     line-height: 1.4;
+    white-space: nowrap;
+    max-width: 100%;
   }
 
   .hero__cta {
@@ -94,6 +103,7 @@
     font-size: 0.85rem;
     letter-spacing: 0.14em;
   }
+
 
   .hero__scroll-hint {
     bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
@@ -449,14 +459,11 @@
     gap: 1.5rem;
   }
 
-  .hero__line--1 {
-    font-size: clamp(2rem, 10vw, 2.4rem);
-  }
-
   .hero__cta {
     padding: 0.85rem 1.5rem;
     min-width: 160px;
   }
+
 
   .section__container {
     padding-left: max(1rem, env(safe-area-inset-left, 0px));
