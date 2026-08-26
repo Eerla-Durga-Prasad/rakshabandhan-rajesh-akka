@@ -86,7 +86,7 @@ photo08: {
   // ── SITE CONTENT (optional overrides) ───────────────
   content: {
     sisterName: "Akka",
-    heroLine1:  "Hey Akka…",
+    heroLine1:  "My Dearest Sister…",
     heroLine2:  "Ee surprise nee kosam.",
     heroLine3:  "Just for you. ❤️"
   }
