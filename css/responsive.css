@@ -4,142 +4,407 @@
 ═══════════════════════════════════════════════════════ */
 
 /* ────────────────────────────────────────────────────
-   VERY SMALL PHONES — 320px to 380px
+   PHONES — up to 768px (Mobile Polish & Rakhi Rule)
  ──────────────────────────────────────────────────── */
-@media (max-width: 380px) {
+@media (max-width: 768px) {
 
-  .hero__content {
-    gap: 1.5rem;
-    padding: 0.75rem;
+  /* ── RAKHI RULE: Hide ONLY the large Rakhi graphic on mobile ── */
+  #rakhi-canvas,
+  .rakhi-fallback {
+    display: none !important;
   }
 
-  .hero__line--1 {
-    font-size: clamp(1.6rem, 8vw, 2rem);
-  }
-
-  .hero__line--2 {
-    font-size: clamp(0.9rem, 4vw, 1.1rem);
-  }
-
-  .hero__line--3 {
-    font-size: clamp(0.8rem, 3.5vw, 1rem);
-  }
-
-  .hero__cta {
-    padding: 0.8rem 1.5rem;
-    min-width: 160px;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+  /* ── GLOBAL LAYOUT & SAFE AREAS ── */
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .section__container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    width: 100%;
+    max-width: 100%;
+    padding-left: max(clamp(1.25rem, 4.5vw, 2rem), env(safe-area-inset-left, 0px));
+    padding-right: max(clamp(1.25rem, 4.5vw, 2rem), env(safe-area-inset-right, 0px));
+    padding-top: clamp(3.5rem, 7vh, 5.5rem);
+    padding-bottom: clamp(3.5rem, 7vh, 5.5rem);
   }
 
-  .intro__heading {
-    font-size: var(--fs-lg);
+  .section__label {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 0.75rem;
   }
 
-  .intro__line {
-    font-size: var(--fs-sm);
+  .section__heading {
+    font-size: clamp(1.85rem, 6.5vw, 2.5rem);
+    line-height: 1.25;
+    margin-bottom: 2rem;
   }
 
-  .memories__heading {
-    font-size: var(--fs-xl);
+  /* ── HERO SECTION ── */
+  .hero {
+    min-height: 100dvh;
+    padding: 0;
   }
 
-  .unsaid__heading {
-    font-size: var(--fs-xl);
-  }
-
-  .final__heading {
-    font-size: var(--fs-xl);
-  }
-
-  .final__line {
-    font-size: var(--fs-sm);
-  }
-
-  .final__closing {
-    font-size: var(--fs-md);
-    padding: 1.25rem 1.5rem;
-  }
-
-  .timeline__marker {
-    width: 38px;
-    height: 38px;
-  }
-
-  .timeline__item {
-    gap: 0 1rem;
-    padding: 1.5rem 0;
-  }
-
-  .music-btn {
-    width: 40px;
-    height: 40px;
-    bottom: 0.75rem;
-    right: 0.75rem;
-  }
-}
-
-/* ────────────────────────────────────────────────────
-   SMALL PHONES — 320px to 480px
- ──────────────────────────────────────────────────── */
-@media (max-width: 480px) {
-
-  /* Cards: single column on tiny screens */
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Hero: tighter spacing on small screens */
   .hero__content {
-    gap: 1.75rem;
-    padding: 1rem 1rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+    padding-top: max(2rem, env(safe-area-inset-top, 0px));
+    padding-bottom: max(3.5rem, env(safe-area-inset-bottom, 0px));
+    gap: clamp(1.75rem, 4.5vh, 2.75rem);
+  }
+
+  .hero__text {
+    gap: clamp(0.75rem, 2vh, 1.25rem);
+    width: 100%;
+  }
+
+  .hero__line {
+    padding: 0 0.25rem;
   }
 
   .hero__line--1 {
-    font-size: clamp(1.8rem, 9vw, 2.4rem);
+    font-size: clamp(2.4rem, 9vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
 
   .hero__line--2 {
-    font-size: clamp(1rem, 4.5vw, 1.3rem);
+    font-size: clamp(1.25rem, 4.5vw, 1.65rem);
+    font-style: italic;
+    line-height: 1.35;
   }
 
   .hero__line--3 {
-    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    font-size: clamp(1.1rem, 4vw, 1.35rem);
+    line-height: 1.4;
   }
 
   .hero__cta {
-    padding: 0.85rem 1.75rem;
-    min-width: 180px;
-    font-size: var(--fs-xs);
-    letter-spacing: 0.12em;
+    padding: 0.95rem 2.2rem;
+    min-height: 52px;
+    min-width: 200px;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
   }
 
-  /* Memory items: full width */
+  .hero__scroll-hint {
+    bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+    opacity: 0.6;
+  }
+
+  .scroll-hint__line {
+    height: 38px;
+  }
+
+  /* ── SECTION 2: INTRO ── */
+  .intro {
+    min-height: auto;
+    padding-top: clamp(2rem, 5vh, 4rem);
+    padding-bottom: clamp(2rem, 5vh, 4rem);
+  }
+
+  .intro__heading {
+    font-size: clamp(1.85rem, 6.5vw, 2.5rem);
+    line-height: 1.25;
+    margin-bottom: clamp(2rem, 5vh, 3.5rem);
+  }
+
+  .intro__lines {
+    gap: clamp(1.25rem, 3.5vh, 1.75rem);
+  }
+
+  .intro__line {
+    font-size: clamp(1.15rem, 4vw, 1.35rem);
+    line-height: 1.6;
+    max-width: 100%;
+    padding-right: 0.5rem;
+  }
+
+  .intro__line--pause {
+    font-size: clamp(1.05rem, 3.8vw, 1.2rem);
+    margin-top: 0.5rem;
+  }
+
+  .intro__line--accent {
+    font-size: clamp(1.35rem, 4.8vw, 1.65rem);
+    font-weight: 600;
+  }
+
+  .intro__line--final {
+    font-size: clamp(1.2rem, 4.2vw, 1.45rem);
+    padding-top: 1.25rem;
+  }
+
+  /* ── SECTION 3: MEMORIES ── */
+  .memories__header {
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+    padding-top: clamp(3.5rem, 7vh, 5rem);
+    padding-bottom: clamp(2rem, 4vh, 3rem);
+  }
+
+  .memories__heading {
+    font-size: clamp(2rem, 7.5vw, 2.75rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .memories__subtitle {
+    font-size: clamp(1.05rem, 3.8vw, 1.25rem);
+    line-height: 1.5;
+  }
+
+  .memories__gallery {
+    gap: clamp(3.5rem, 7vh, 5.5rem);
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+
+  .memory-item {
+    gap: 1.25rem;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+  }
+
   .memory-item--large,
   .memory-item--left,
-  .memory-item--right {
+  .memory-item--right,
+  .memory-item--center {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .memory-item__caption {
+    padding: 0 0.25rem;
+  }
+
+  .caption__year {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .caption__text {
+    font-size: clamp(1.05rem, 3.8vw, 1.25rem);
+    line-height: 1.5;
+  }
+
+  /* ── SECTION 4: MEMORY CARDS ── */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .mem-card__inner {
+    padding: clamp(1.5rem, 4.5vw, 2rem) clamp(1.25rem, 4vw, 1.75rem);
+  }
+
+  .mem-card__title {
+    font-size: clamp(1.2rem, 4.2vw, 1.4rem);
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+  }
+
+  .mem-card__body {
+    font-size: clamp(0.98rem, 3.5vw, 1.1rem);
+    line-height: 1.65;
+  }
+
+  /* ── SECTION 5: TIMELINE (01–06 Clean Alignment) ── */
+  .timeline {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .timeline::before {
+    left: 24px;
+    transform: translateX(-50%);
+    width: 2px;
+  }
+
+  .timeline__item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    grid-template-rows: auto;
+    align-items: flex-start;
+    gap: 0 clamp(1rem, 3.5vw, 1.5rem);
+    padding: clamp(1.25rem, 3.5vw, 2rem) 0;
+  }
+
+  .timeline__item:nth-child(odd) .timeline__marker,
+  .timeline__item:nth-child(even) .timeline__marker {
+    grid-column: 1;
+    grid-row: 1;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto;
+  }
+
+  .timeline__item:nth-child(odd) .timeline__content,
+  .timeline__item:nth-child(even) .timeline__content {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    padding: 0;
     max-width: 100%;
     margin: 0;
   }
 
-  /* Secret section: reduce padding */
+  .timeline__marker span {
+    font-size: 0.8rem;
+  }
+
+  .timeline__chapter {
+    font-size: clamp(1.2rem, 4.2vw, 1.4rem);
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+  }
+
+  .timeline__desc {
+    font-size: clamp(0.95rem, 3.4vw, 1.08rem);
+    line-height: 1.6;
+  }
+
+  /* ── SECTION 6: UNSAID MESSAGES ── */
+  .unsaid-section {
+    min-height: auto;
+    padding-top: clamp(2rem, 5vh, 4rem);
+    padding-bottom: clamp(2rem, 5vh, 4rem);
+  }
+
+  .unsaid__heading {
+    font-size: clamp(2rem, 7.5vw, 2.75rem);
+    line-height: 1.2;
+    margin-bottom: clamp(2.5rem, 5vh, 4rem);
+  }
+
+  .unsaid__messages {
+    gap: clamp(1.5rem, 3.5vh, 2.25rem);
+    max-width: 100%;
+  }
+
+  .unsaid__msg {
+    font-size: clamp(1.15rem, 4vw, 1.35rem);
+    line-height: 1.6;
+    padding-left: 1.35rem;
+  }
+
+  .unsaid__msg--final {
+    font-size: clamp(1.35rem, 4.8vw, 1.65rem);
+    padding-top: 1.5rem;
+  }
+
+  /* ── SECTION 7: SECRET SECTION ── */
+  .secret__container {
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+
+  .secret__heading {
+    font-size: clamp(1.85rem, 6.5vw, 2.5rem);
+    line-height: 1.25;
+  }
+
+  .secret__sub {
+    font-size: clamp(1.05rem, 3.8vw, 1.25rem);
+  }
+
   .secret__btn {
-    padding: 0.9rem 2rem;
+    padding: 0.95rem 2.2rem;
+    font-size: clamp(0.85rem, 3.2vw, 0.95rem);
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
   }
 
-  /* Timeline */
-  .timeline {
-    padding-left: 1rem;
+  .secret__reveal {
+    max-width: 100%;
+    margin-top: 2rem;
+    gap: 1.5rem;
+    text-align: left;
   }
 
-  /* Music button: icon only on very small screens */
+  .secret__reveal-line {
+    font-size: clamp(1.1rem, 3.8vw, 1.28rem);
+    line-height: 1.65;
+  }
+
+  .secret__reveal-line--main {
+    font-size: clamp(1.15rem, 4vw, 1.35rem);
+    line-height: 1.75;
+  }
+
+  .secret__reveal-line--accent {
+    font-size: clamp(1.05rem, 3.6vw, 1.2rem);
+    padding: 1.25rem;
+    line-height: 1.6;
+  }
+
+  /* ── SECTION 8: FINAL SECTION ── */
+  .final__content {
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+    padding-top: max(clamp(3.5rem, 7vh, 5.5rem), env(safe-area-inset-top, 0px));
+    padding-bottom: max(clamp(3.5rem, 7vh, 5.5rem), env(safe-area-inset-bottom, 0px));
+    gap: clamp(1.75rem, 4vh, 2.5rem);
+  }
+
+  .final__rakhi {
+    width: clamp(50px, 12vw, 75px);
+    height: clamp(50px, 12vw, 75px);
+  }
+
+  .final__heading {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    line-height: 1.2;
+  }
+
+  .final__lines {
+    gap: 0.85rem;
+  }
+
+  .final__line {
+    font-size: clamp(1.15rem, 4vw, 1.35rem);
+    line-height: 1.5;
+  }
+
+  .final__closing {
+    font-size: clamp(1.3rem, 4.8vw, 1.65rem);
+    padding: 1.25rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .final__closing::before,
+  .final__closing::after {
+    width: 60px;
+  }
+
+  .final__signature {
+    font-size: clamp(0.95rem, 3.4vw, 1.05rem);
+  }
+
+  /* ── MUSIC BUTTON ON MOBILE ── */
+  .music-btn {
+    bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+    right: max(1rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   SMALL PHONES — up to 480px (Fine-tuning)
+ ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
   .music-label {
     display: none;
   }
@@ -151,162 +416,85 @@
     justify-content: center;
   }
 
-  /* Final section */
-  .final__closing {
-    padding: 1.5rem 1.5rem;
+  .hero__cta {
+    min-width: 180px;
+    padding: 0.9rem 1.8rem;
   }
 
-  .final__closing::before,
-  .final__closing::after {
-    width: 50px;
+  .timeline__item {
+    gap: 0 1rem;
+    padding: 1.25rem 0;
   }
 
-  .final__heading {
-    font-size: var(--fs-2xl);
+  .timeline__marker {
+    width: 40px;
+    height: 40px;
   }
 
-  .final__line {
-    font-size: var(--fs-md);
+  .timeline::before {
+    left: 20px;
   }
 
-  /* Unsaid */
-  .unsaid__msg {
-    padding-left: 1rem;
-  }
-
-  .unsaid__heading {
-    font-size: var(--fs-2xl);
-  }
-
-  /* Memories */
-  .memories__heading {
-    font-size: var(--fs-2xl);
-  }
-
-  /* Scroll hint smaller on tiny screens */
-  .hero__scroll-hint {
-    bottom: 1.5rem;
-  }
-
-  .scroll-hint__line {
-    height: 35px;
-  }
-
-  /* Intro */
-  .intro__heading {
-    font-size: var(--fs-xl);
-  }
-
-  .intro__line {
-    font-size: var(--fs-base);
-  }
-
-  .intro__line--accent {
-    font-size: var(--fs-lg);
+  .timeline__item {
+    grid-template-columns: 40px 1fr;
   }
 }
 
 /* ────────────────────────────────────────────────────
-   PHONES — 480px to 768px
+   VERY SMALL PHONES — up to 380px (320px–380px)
  ──────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 380px) {
 
-  /* Prevent horizontal overflow globally */
-  body {
-    overflow-x: hidden;
-  }
-
-  /* Cards: single column */
-  .cards-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  /* Intro lines: smaller */
-  .intro__line {
-    font-size: var(--fs-md);
-  }
-
-  .intro__line--accent {
-    font-size: var(--fs-lg);
-  }
-
-  /* Memory: no side offsets */
-  .memory-item--large,
-  .memory-item--left,
-  .memory-item--right,
-  .memory-item--center {
-    max-width: 100%;
-    margin: 0;
-  }
-
-  /* Section padding */
-  .section__container {
-    padding-top: clamp(4rem, 8vw, 6rem);
-    padding-bottom: clamp(4rem, 8vw, 6rem);
-  }
-
-  /* Hero content text alignment */
   .hero__content {
-    padding: 1rem;
+    gap: 1.5rem;
   }
 
-  /* Final section: smaller gaps */
-  .final__content {
-    gap: 2rem;
+  .hero__line--1 {
+    font-size: clamp(2rem, 10vw, 2.4rem);
   }
 
-  /* Unsaid heading */
-  .unsaid__heading {
-    font-size: var(--fs-2xl);
+  .hero__cta {
+    padding: 0.85rem 1.5rem;
+    min-width: 160px;
   }
 
-  /* Memories header */
-  .memories__heading {
-    font-size: var(--fs-2xl);
+  .section__container {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
   }
 
-  /* Secret reveal: full width text */
-  .secret__reveal {
-    max-width: 100%;
-    text-align: left;
+  .timeline__marker {
+    width: 36px;
+    height: 36px;
   }
 
-  /* Loader tagline size */
-  .loader__tagline {
-    font-size: var(--fs-base);
-    text-align: center;
-    padding: 0 1rem;
+  .timeline__marker span {
+    font-size: 0.72rem;
   }
 
-  /* Hero scroll hint — reduce opacity on mobile */
-  .hero__scroll-hint {
-    opacity: 0.5;
+  .timeline::before {
+    left: 18px;
   }
 
-  /* Final section content */
-  .final__rakhi {
-    width: clamp(50px, 8vw, 80px);
-    height: clamp(50px, 8vw, 80px);
+  .timeline__item {
+    grid-template-columns: 36px 1fr;
+    gap: 0 0.85rem;
   }
 
-  .final__heading {
-    font-size: var(--fs-2xl);
+  .timeline__chapter {
+    font-size: 1.1rem;
   }
 
-  .final__line {
-    font-size: var(--fs-md);
+  .timeline__desc {
+    font-size: 0.9rem;
   }
 
   .final__closing {
-    font-size: var(--fs-lg);
-    padding: 1.5rem 2rem;
-  }
-
-  .final__signature {
-    font-size: var(--fs-sm);
+    font-size: 1.15rem;
+    padding: 1rem 1rem;
   }
 }
+
 
 /* ────────────────────────────────────────────────────
    TABLETS — 768px to 1024px
