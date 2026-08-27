@@ -40,7 +40,7 @@ window.RBMusic = (function () {
     audio.src     = config.src;
     audio.volume  = 0;
     audio.loop    = config.loop !== false;
-    audio.preload = 'none'; // Don't preload until user clicks
+    audio.preload = 'auto';
 
     // Audio event handlers
     audio.addEventListener('error', () => {
@@ -52,6 +52,19 @@ window.RBMusic = (function () {
     btn.addEventListener('click', toggle);
 
     initialized = true;
+
+    // Attempt autoplay on page load
+    play();
+
+    // If blocked by browser autoplay policy, start on first user interaction
+    const unlockAutoplay = () => {
+      if (!isPlaying && audio) {
+        play();
+      }
+    };
+    ['click', 'touchstart', 'pointerdown'].forEach(evt => {
+      document.addEventListener(evt, unlockAutoplay, { once: true, passive: true });
+    });
   }
 
   function toggle() {

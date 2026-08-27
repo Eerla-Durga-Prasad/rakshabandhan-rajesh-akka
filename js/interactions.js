@@ -248,11 +248,11 @@ window.RBInteractions = (function () {
       img.alt = data.alt || '';
       img.removeAttribute('loading');
 
-      const placeholder = img.previousElementSibling;
+      const placeholder = img.parentElement ? img.parentElement.querySelector('.memory-item__placeholder') : null;
 
       const handleLoad = function () {
         img.classList.add('is-loaded');
-        if (placeholder && placeholder.classList.contains('memory-item__placeholder')) {
+        if (placeholder) {
           placeholder.style.display = 'none';
         }
       };

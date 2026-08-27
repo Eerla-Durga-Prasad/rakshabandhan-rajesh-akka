@@ -25,51 +25,45 @@ window.RBConfig = {
   // Add your real photo paths here. Leave src empty ("") to show placeholder.
   photos: {
     photo01: {
-      src:     "images/photo01.png",                          // e.g. "images/sister-01.webp"
-      alt:     "Sister memory — a playful moment",
-      caption: "The silly moments were always the best.",
+      src:     "images/photo.1.jpeg",
+      alt:     "Childhood memory — together from the very beginning",
+      caption: "Where it all began. The very first chapter.",
       year:    ""
     },
     photo02: {
-       src: "images/photo02.png",
-       alt: "Sister memory — a simple smile",
-       caption: "Some smiles never need a reason.",
+       src: "images/photo2.jpeg",
+       alt: "Akka in purple dress at home",
+       caption: "Even at home, she makes every moment beautiful.",
        year: ""
     },
     photo03: {
-       src: "images/photo03.png",
-       alt: "Sister memory — a happy candid moment",
-       caption: "The smiles I'll always remember.",
+       src: "images/photo3.jpeg",
+       alt: "Akka radiant in pink saree",
+       caption: "The way she lights up every room she walks into.",
        year: ""
     },
     photo04: {
-       src: "images/photo04.png",
-       alt: "Sister memory — growing up",
-       caption: "Growing into the person you were meant to be.",
+       src: "images/photo4.jpeg",
+       alt: "Akka portrait in pink saree",
+       caption: "Grace. Warmth. That smile that says everything.",
        year: ""
     },
     photo05: {
-       src: "images/photo05.png",
-       alt: "Sister memory — growing up together",
-       caption: "Growing up, together.",
+       src: "images/photo5.jpeg",
+       alt: "Akka in pink saree at temple",
+       caption: "Devotion, tradition, and her. Always together.",
        year: ""
     },
-photo06: {
-       src: "images/photo06.png",
-       alt: "Sister memory — together with family",
-       caption: "Some memories are better together.",
+    photo06: {
+       src: "images/photo6.jpeg",
+       alt: "Akka at home in pink saree",
+       caption: "Home feels like home because of people like her.",
        year: ""
     },
-photo07: {
-       src: "images/photo07.png",
-       alt: "Sister memory — a family moment",
-       caption: "Moments worth keeping forever.",
-       year: ""
-    },
-photo08: {
-       src: "images/photo08.jpg",
-       alt: "Sister memory — together, always",
-       caption: "And somehow, after all these years, it's still us.",
+    photo07: {
+       src: "images/photo7.jpeg",
+       alt: "Brother and Akka — always together",
+       caption: "Us. No explanation needed.",
        year: ""
     }
   },
@@ -86,8 +80,8 @@ photo08: {
   // ── SITE CONTENT (optional overrides) ───────────────
   content: {
     sisterName: "Akka",
-    heroLine1:  "My Dearest Sister…",
-    heroLine2:  "Ee surprise nee kosam.",
-    heroLine3:  "Just for you. ❤️"
+    heroLine1:  "My Dearest Akka ❤️",
+    heroLine2:  "This surprise is just for you.",
+    heroLine3:  "With all my love. 🌸"
   }
 };

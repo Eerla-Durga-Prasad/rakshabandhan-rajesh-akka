@@ -73,12 +73,14 @@
   }
 
   .hero__line--1 {
-    font-size: clamp(1.35rem, 6.5vw, 2.5rem);
+    font-size: clamp(1.2rem, 5.8vw, 2.5rem);
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.01em;
     white-space: nowrap;
     max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .hero__line--2 {
@@ -457,6 +459,11 @@
 
   .hero__content {
     gap: 1.5rem;
+  }
+
+  .hero__line--1 {
+    font-size: clamp(1.05rem, 5.2vw, 1.4rem);
+    letter-spacing: -0.02em;
   }
 
   .hero__cta {
